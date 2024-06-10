@@ -29,7 +29,7 @@ test_data = {
 # Function to extract features from audio files
 def extract_features(file_path):
     y, sr = librosa.load(file_path, sr=None)
-    mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20) # 8192 (samples) / rate 44.1kHz (samples/sec) = 185.8 sec  , n_fft=8192, hop_length=2048
+    mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20, n_fft=16384, hop_length=4096)
     return np.mean(mfccs, axis=1)
 
 
